@@ -12,6 +12,7 @@ class Trip {
     this.dailyLodgingCost = destinations.findDestination(trip.destinationID).estimatedLodgingCostPerDay;
     this.flightCostPerTraveler = destinations.findDestination(trip.destinationID).estimatedFlightCostPerPerson;
     this.picture = destinations.findDestination(trip.destinationID).image;
+    this.altText = destinations.findDestination(trip.destinationID).alt;
   }
   calculateTripCost() {
     //1) ((this.dailyLodgingCost + this.flightCostPerTraveler) * this.travelersAmount) + 10% fee
