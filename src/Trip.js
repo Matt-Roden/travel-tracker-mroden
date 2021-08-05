@@ -15,9 +15,9 @@ class Trip {
     this.altText = destinations.findDestination(trip.destinationID).alt;
   }
   calculateTripCost() {
-    //1) ((this.dailyLodgingCost + this.flightCostPerTraveler) * this.travelersAmount) + 10% fee
-    // will probably need to make a variable that holds the 10% fee amount after getting initial pre-fee cost
-    // can then add this value to the output of the cost without the fee and return this number
+    const preFeeAmt = ((this.dailyLodgingCost * this.duration) + this.flightCostPerTraveler) * this.travelersAmount;
+    const fee = preFeeAmt * 0.1;
+    return preFeeAmt + fee;
   }
   // determineTripStatus() {
   //   // if the status is not pending and the trip date is less than today's date - status = past
