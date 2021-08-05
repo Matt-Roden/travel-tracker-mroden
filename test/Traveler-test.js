@@ -6,17 +6,20 @@ import Trip from '../src/Trip'
 import sampleData from './test-data'
 
 describe('Traveler', () => {
-  let destinations, allTrips, traveler1, traveler2
+  let destinations, allTrips, traveler1, traveler2;
+  let destinationsData = sampleData.destinations;
+  let tripsData = sampleData.trips;
+  let travelersData = sampleData.travelers;
 
   beforeEach(() => {
-    destinations = new Destination(sampleData.destinations);
-    allTrips = samppleData.trips.map((trip) => new Trip(trip, destinations));
-    traveler1 = new Traveler(sampleData.travelers[0], trips);
-    traveler2 = new Traveler(sampleData.travelers[1], trips);
+    destinations = new Destination(destinations);
+    allTrips = tripsData.map((trip) => new Trip(trip, destinations));
+    traveler1 = new Traveler(travelersData[0], allTrips);
+    traveler2 = new Traveler(travelersData[1], allTrips);
   });
 
-  it('should be a function', () => {
-    
+  it.only('should be a function', () => {
+    expect(Traveler).to.be.a('function');
   });
 
   it('should have an ID', () => {
