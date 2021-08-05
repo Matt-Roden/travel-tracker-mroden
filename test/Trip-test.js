@@ -86,7 +86,8 @@ let tripsData = sampleData.trips;
   })
 
   it('should calculate the total trip cost', () => {
-
+    expect(trip1.calculateTripCost()).to.equal(1056);
+    expect(trip2.calculateTripCost()).to.equal(14190);
   });
 
 }); //END TEST
