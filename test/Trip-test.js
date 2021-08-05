@@ -4,7 +4,7 @@ import Destination from '../src/Destination'
 import Trip from '../src/Trip'
 import sampleData from './test-data'
 
-describe.only('Trip', () => {
+describe('Trip', () => {
 let destinations, trips, trip1, trip2
 let destinationsData = sampleData.destinations;
 let tripsData = sampleData.trips;
