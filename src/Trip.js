@@ -8,7 +8,7 @@ class Trip {
     this.duration = trip.duration;
     this.status = trip.status || 'pending';
     this.suggestedActivities = trip.suggestedActivities;
-    this.destinationName = destionations.findDestination(trip.destinationID).destination;
+    this.destinationName = destinations.findDestination(trip.destinationID).destination;
     this.dailyLodgingCost = destinations.findDestination(trip.destinationID).estimatedLodgingCostPerDay;
     this.flightCostPerTraveler = destinations.findDestination(trip.destinationID).estimatedFlightCostPerPerson;
     this.picture = destinations.findDestination(trip.destinationID).image;
