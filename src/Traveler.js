@@ -12,3 +12,4 @@ class Traveler {
     // will filter all of the current, past, and upcoming trips for this traveler that are in 2021, and then add the costs up + 10% fee
   }
 }
+export default Traveler;
