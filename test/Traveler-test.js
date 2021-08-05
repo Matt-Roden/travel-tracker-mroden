@@ -18,7 +18,7 @@ describe('Traveler', () => {
     traveler2 = new Traveler(travelersData[1], allTrips);
   });
 
-  it.only('should be a function', () => {
+  it('should be a function', () => {
     expect(Traveler).to.be.a('function');
   });
 
