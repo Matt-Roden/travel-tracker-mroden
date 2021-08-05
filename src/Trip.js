@@ -1,7 +1,7 @@
 class Trip {
   constructor(trip, destinations) {
     this.id = trip.id;
-    this.userID = trip.userID;
+    this.travelerID = trip.userID;
     this.destinationID = trip.destinationID;
     this.travelersAmount = trip.travelers;
     this.startDate = trip.date;
@@ -18,9 +18,9 @@ class Trip {
     // will probably need to make a variable that holds the 10% fee amount after getting initial pre-fee cost
     // can then add this value to the output of the cost without the fee and return this number
   }
-  determineTripStatus() {
-    // if the status is not pending and the trip date is less than today's date - status = past
-    // if the status is not pending and the trip date is equal to todays date - status = current
-  }
+  // determineTripStatus() {
+  //   // if the status is not pending and the trip date is less than today's date - status = past
+  //   // if the status is not pending and the trip date is equal to todays date - status = current
+  // }
 }
 export default Trip;
