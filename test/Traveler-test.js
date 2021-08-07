@@ -40,14 +40,14 @@ console.log(tripsData, '<><><>')
     expect(traveler2.type).to.equal('thrill-seeker')
   })
 
-  it.only('should know all of it\'s trips', () => {
+  it('should know all of it\'s trips', () => {
     console.log(traveler1.id)
     expect(traveler1.trips.length).to.equal(6);
 
   })
 
-  it('should calculate the total spent on trips this year', () => {
-
+  it.only('should calculate the total spent on trips this year', () => {
+    expect(traveler1.calculateTotalSpentThisYear('2021')).to.equal()
   })
 
 });
