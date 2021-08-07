@@ -5,22 +5,18 @@ import Destination from '../src/Destination'
 import Traveler from '../src/Traveler'
 import sampleData from './test-data'
 
-describe.only('Traveler', () => {
+describe('Traveler', () => {
   let destinations, trips, allTrips, traveler1, traveler2;
   let destinationsData = sampleData.destinations;
   let tripsData = sampleData.trips;
   let travelersData = sampleData.travelers;
-// console.log(tripsData, '<><><>')
 
   beforeEach(() => {
     destinations = new Destination(destinationsData);
     trips = tripsData.map((trip) => new Trip(trip, destinations));
     traveler1 = new Traveler(travelersData[0], trips);
     traveler2 = new Traveler(travelersData[1], trips);
-    console.log(trips, 'yooo<><>')
   });
-
-
 
   it('should be a function', () => {
     expect(Traveler).to.be.a('function');
@@ -42,9 +38,7 @@ describe.only('Traveler', () => {
   })
 
   it('should know all of it\'s trips', () => {
-    console.log(traveler1.trips, '<><>')
     expect(traveler1.trips.length).to.equal(6);
-
   })
 
   it('should calculate the total spent on trips this year', () => {
