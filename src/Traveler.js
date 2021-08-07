@@ -10,8 +10,8 @@ class Traveler {
   }
   calculateTotalSpentThisYear(year) {
     console.log(this.trips)
-    const nonPenidngTrips = this.trips.filter((trip) => trip.status !== 'pending')
-    const tripsThisYear = this.trips.filter((trip) => trip.startDate.includes(year));
+    const nonPendingTrips = this.trips.filter((trip) => trip.status !== 'pending')
+    const tripsThisYear = nonPendingTrips.filter((trip) => trip.startDate.includes(year));
     const totalSpentThisYear = tripsThisYear.reduce((accNum, trip) => {
       accNum += trip.calculateTripCost();
       return accNum
