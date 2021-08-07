@@ -5,18 +5,19 @@ import Destination from '../src/Destination'
 import Traveler from '../src/Traveler'
 import sampleData from './test-data'
 
-describe('Traveler', () => {
-  let destinations, allTrips, traveler1, traveler2;
+describe.only('Traveler', () => {
+  let destinations, trips, allTrips, traveler1, traveler2;
   let destinationsData = sampleData.destinations;
   let tripsData = sampleData.trips;
   let travelersData = sampleData.travelers;
-console.log(tripsData, '<><><>')
+// console.log(tripsData, '<><><>')
 
   beforeEach(() => {
     destinations = new Destination(destinationsData);
-    traveler1 = new Traveler(travelersData[0], tripsData);
-    traveler2 = new Traveler(travelersData[1], tripsData);
-    console.log(tripsData, 'yooo<><>')
+    trips = tripsData.map((trip) => new Trip(trip, destinations));
+    traveler1 = new Traveler(travelersData[0], trips);
+    traveler2 = new Traveler(travelersData[1], trips);
+    console.log(trips, 'yooo<><>')
   });
 
 
@@ -41,13 +42,13 @@ console.log(tripsData, '<><><>')
   })
 
   it('should know all of it\'s trips', () => {
-    console.log(traveler1.id)
+    console.log(traveler1.trips, '<><>')
     expect(traveler1.trips.length).to.equal(6);
 
   })
 
-  it.only('should calculate the total spent on trips this year', () => {
-    expect(traveler1.calculateTotalSpentThisYear('2021')).to.equal()
+  it('should calculate the total spent on trips this year', () => {
+    expect(traveler1.calculateTotalSpentThisYear('2021')).to.equal('You have spent $9900 on trips so far this year!')
   })
 
 });
