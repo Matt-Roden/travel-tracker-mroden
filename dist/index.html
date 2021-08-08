@@ -7,14 +7,33 @@
   <title>Webpack Starter Kit</title>
 </head>
 <body>
-  <!-- Header Section -->
-  <header></header>
+
+  <!-- Login Page -->
+  <header class="login-header">header</header>
+  <form class="login-form" id="login_form">
+    <div class="username-wrapper">
+      <label for="username">Username</label>
+      <input type="text" name="username" placeholder="traveler...">
+    </div>
+    <div class="password-wrapper">
+      <label for="password">Password</label>
+      <input type="text" name="password" placeholder="Password">
+    </div>
+    <div class="login-submit">
+      <button type="submit" name="login" id="login_submit">Login</button>
+    </div>
+
+  </form>
+
 
 <!-- Main Section -->
   <main>
 
+    <!-- Header Section -->
+    <header></header>
+
 <!-- Form -->
-    <form id='form'>
+    <form id='request_form' class="request-form">
       <div class="date-picker-wrapper form-wrapper-div">
         <label for="date-selector">When would you like your trip to start?</label>
         <input type="date" name="date-selector">
