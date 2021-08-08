@@ -6,13 +6,23 @@ import './css/base.scss';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
-
+import Destination from './Destination'
+import Trip from './Trip'
+import Traveler from './Traveler'
 import getAllData from './apiCalls';
 
-let destinations, trips, traveler1, alltravelers
+let destinations, allTrips, traveler, alltravelers
 
 getAllData()
   .then((data) => {
-    destinations = new Destination(data[0]
-    console.log(destinations))
-  })
+    destinations = new Destination(data[0])
+    // console.log(destinations)
+    allTrips = createAllTrips(data[1], destinations)
+    // console.log(allTrips)
+    traveler = new Traveler(data[2], allTrips)
+    console.log(traveler)
+  });
+
+function createAllTrips(tripData, destinations) {
+  return tripData.trips.map((trip) => new Trip(trip, destinations))
+}
