@@ -15,13 +15,20 @@ header {
   width: 75vw;
 }
 
+form {
+  border: dotted purple 3px;
+}
 
 section {
   border: solid black 3px;
-  height: 100px;
+  height: 30vh;
   width: 75vw;
 }
 
 .destination-selector {
   border: solid red 3px;
+}
+
+.hidden {
+display: none;
 }
