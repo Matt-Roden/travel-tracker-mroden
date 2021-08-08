@@ -7,9 +7,47 @@
   <title>Webpack Starter Kit</title>
 </head>
 <body>
-  <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
-  
-  <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
+  <!-- Header Section -->
+  <header></header>
+
+<!-- Main Section -->
+  <main>
+
+<!-- Form -->
+    <form id='form'>
+      <div class="date-picker-wrapper">
+        <label for="date-selector">When would you like your trip to start?</label>
+        <input type="date" name="date-selector">
+      </div>
+
+      <div class="duration-picker-wrapper">
+        <label for="duration-selector">How long will your trip be?</label>
+        <div class="date-in-days-wrapper">
+          <input type="number" name="duration-selector" value="0">
+          <p class="text-for-duration">Days</p>
+        </div>
+      </div>
+
+      <div class="travelers-amount-wrapper">
+        <label for="travelers-selector">How many travelers will there be?</label>
+        <input type="number" name="travelers-selector" value="1">
+      </div>
+
+      <section class="destination-selector" id='destination_selector'></section>
+
+    </form>
+
+<!-- Cards/Trips Sections -->
+    <div class="trips-display-wrapper">
+      <section class="current"></section>
+      <section class="upcoming"></section>
+      <section class="past"></section>
+      <section class="pending"></section>
+    </div>
+  </main>
+
+  <!-- Footer Section -->
+  <footer></footer>
   <script src="bundle.js"></script>
 
 </body>
