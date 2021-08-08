@@ -7,9 +7,67 @@
   <title>Webpack Starter Kit</title>
 </head>
 <body>
-  <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
-  
-  <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
+
+  <!-- Login Page -->
+  <div class="login-wrapper hidden">
+    <header class="login-header">Login Header</header>
+    <form class="login-form" id="login_form">
+      <div class="username-wrapper">
+        <label for="username">Username</label>
+        <input type="text" name="username" placeholder="traveler...">
+      </div>
+      <div class="password-wrapper">
+        <label for="password">Password</label>
+        <input type="text" name="password" placeholder="Password">
+      </div>
+      <div class="login-submit">
+        <button type="submit" name="login" id="login_submit">Login</button>
+      </div>
+    </form>
+  </div>
+
+
+<!-- Main Section -->
+  <main class=" main-page-wrapper">
+
+    <!-- Header Section -->
+    <header>Main Page Header</header>
+
+<!-- Form -->
+    <form id='request_form' class="request-form">
+      <div class="date-picker-wrapper form-wrapper-div">
+        <label for="date-selector">When would you like your trip to start?</label>
+        <input type="date" name="date-selector">
+      </div>
+
+      <div class="duration-picker-wrapper form-wrapper-div">
+        <label for="duration-selector">How long will your trip be?</label>
+        <div class="date-in-days-wrapper">
+          <input type="number" name="duration-selector" value="0">
+          <p class="text-for-duration">Days</p>
+        </div>
+      </div>
+
+      <div class="travelers-amount-wrapper form-wrapper-div">
+        <label for="travelers-selector">How many travelers will there be?</label>
+        <input type="number" name="travelers-selector" value="1">
+      </div>
+
+      <section class="destination-selector" id='destination_selector'>Destinations to look through</section>
+
+    </form>
+
+<!-- Cards/Trips Sections -->
+    <div class="trips-display-wrapper">
+      <section class="current"></section>
+      <section class="upcoming"></section>
+      <section class="past"></section>
+      <section class="pending"></section>
+    </div>
+  </main>
+
+  <!-- Footer Section -->
+  <footer></footer>
   <script src="bundle.js"></script>
 
 </body>
