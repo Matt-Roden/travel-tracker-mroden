@@ -20,7 +20,7 @@ getAllData()
     allTrips = createAllTrips(data[1], destinations)
     // console.log(allTrips)
     traveler = new Traveler(data[2], allTrips)
-    console.log(traveler)
+    // console.log(traveler)
   });
 
 function createAllTrips(tripData, destinations) {

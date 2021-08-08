@@ -1,5 +1,6 @@
 const getData = (suffix) => {
-  return fetch(`http://localhost:3001/api/v1/${suffix}`).then((response) => response.json());
+  return fetch(`http://localhost:3001/api/v1/${suffix}`)
+    .then((response) => response.json());
 };
 
 const getAllData = () => {
