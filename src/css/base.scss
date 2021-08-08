@@ -4,6 +4,15 @@
 
 body {
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header {
+  border: solid black 3px;
+  height: 100px;
+  width: 75vw;
 }
 
 
