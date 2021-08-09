@@ -4,7 +4,6 @@ dayjs.extend(isBetween);
 
 class Trip {
   constructor(trip, destinations) {
-    // console.log(destinations, ',.,,.,')
     this.id = trip.id;
     this.travelerID = trip.userID;
     this.destinationID = trip.destinationID;
