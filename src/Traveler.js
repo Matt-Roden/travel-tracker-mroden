@@ -1,33 +1,10 @@
 class Traveler {
-  constructor(traveler, tripsData) {
+  constructor(traveler, tripsData, date) {
     this.id = traveler.id;
     this.name = traveler.name;
     this.type = traveler.travelerType;
     this.trips = tripsData.filter((trip) => trip.travelerID === this.id);
-    this.upcomingTrips = this.trips.reduce((accArr, trip) => {
-      if(trip.determineTripStatus(trip.startDate)) {
-        accArr.push(trip)
-      }
-      return accArr
-    }, []);
-    this.pastTrips = this.trips.reduce((accArr, trip) => {
-      if(trip.determineTripStatus(trip.startDate)) {
-        accArr.push(trip)
-      }
-      return accArr
-    }, []);
-    this.currentTrips = this.trips.reduce((accArr, trip) => {
-      if(trip.determineTripStatus(trip.startDate)) {
-        accArr.push(trip)
-      }
-      return accArr
-    }, []);
-    this.pendingTrips = this.trips.reduce((accArr, trip) => {
-      if(trip.determineTripStatus(trip.startDate)) {
-        accArr.push(trip)
-      }
-      return accArr
-    }, []);
+    this.updateTrips = this.trips.forEach((trip) => trip.determineTripStatus(date));
   }
   calculateTotalSpentThisYear(year) {
     const nonPendingTrips = this.trips.filter((trip) => trip.status !== 'pending');
