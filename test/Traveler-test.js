@@ -5,9 +5,9 @@ import Destination from '../src/Destination'
 import Traveler from '../src/Traveler'
 import sampleData from './test-data'
 
-describe('Traveler', () => {
+describe.only('Traveler', () => {
   let destinations, trips, allTrips, traveler1, traveler2;
-  let destinationsData = sampleData.destinations;
+  let destinationsData = sampleData;
   let tripsData = sampleData.trips;
   let travelersData = sampleData.travelers;
 
@@ -42,7 +42,15 @@ describe('Traveler', () => {
   })
 
   it('should calculate the total spent on trips this year', () => {
+    // console.log(traveler1.upcomingTrips.length, 'length')
+    // console.log(traveler1.currentTrips.length, 'length')
+    // console.log(traveler1.pastTrips.length, 'length')
+    // console.log(traveler1.pendingTrips.length, 'length')
     expect(traveler1.calculateTotalSpentThisYear('2021')).to.equal('You have spent $9900 on trips so far this year!')
+  })
+
+  it('should know the updated status of all it\'s trips', () => {
+    expect(traveler1.upcomingTrips.length).to.equal()
   })
 
 });
