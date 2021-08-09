@@ -3,8 +3,7 @@ import { destinations, allTrips, traveler } from './scripts.js'
 var dayjs = require('dayjs')
 
 const todaysDate = (dayjs().format('YYYY/MM/DD'))
-
-
+const thisYear = dayjs().format('YYYY')
 
 const domUpdateMethods = {
 
@@ -48,7 +47,7 @@ const domUpdateMethods = {
   displayAmountSpentThisYear(traveler) {
     const amountSpent = document.getElementById('yearly_amount_spent');
 
-    amountSpent.innerText = 
+    amountSpent.innerText = `${traveler.calculateTotalSpentThisYear(thisYear)}`
   }
 
 }; // END domUpdates
