@@ -542,7 +542,7 @@ const sampleData = {
   },
   {
     "id": 11,
-    "userID": 1,
+    "userID": 5,
     "destinationID": 10,
     "travelers": 6,
     "date": "2021/08/08",
@@ -552,7 +552,7 @@ const sampleData = {
   },
   {
     "id": 12,
-    "userID": 1,
+    "userID": 5,
     "destinationID": 10,
     "travelers": 6,
     "date": "2023/08/08",
