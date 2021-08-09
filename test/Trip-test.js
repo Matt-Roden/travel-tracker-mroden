@@ -6,7 +6,7 @@ import sampleData from './test-data'
 
 describe('Trip', () => {
 let destinations, trips, trip1, trip2
-let destinationsData = sampleData.destinations;
+let destinationsData = sampleData;
 let tripsData = sampleData.trips;
 
   beforeEach(() => {
@@ -88,6 +88,12 @@ let tripsData = sampleData.trips;
   it('should calculate the total trip cost', () => {
     expect(trip1.calculateTripCost()).to.equal(1056);
     expect(trip2.calculateTripCost()).to.equal(14190);
+  });
+
+  it.only('should assign a new status to the current traveler\'s trips', () => {
+    const trip3 = trips[11]
+    trip3.determineTripStatus('2021/08/09');
+    expect(trip3.status).to.equal('current');
   });
 
 }); //END TEST
