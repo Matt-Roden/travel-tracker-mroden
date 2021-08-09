@@ -90,7 +90,7 @@ let tripsData = sampleData.trips;
     expect(trip2.calculateTripCost()).to.equal(14190);
   });
 
-  it.only('should assign a new status to the current traveler\'s trips', () => {
+  it('should assign a new status to the current traveler\'s trips', () => {
     const trip3 = trips[11]
     const trip4 = trips[12]
     trip3.determineTripStatus('2021/08/09');
@@ -99,6 +99,7 @@ let tripsData = sampleData.trips;
     expect(trip3.status).to.equal('current');
     expect(trip1.status).to.equal('past');
     expect(trip4.status).to.equal('upcoming');
+    console.log()
   });
 
 }); //END TEST
