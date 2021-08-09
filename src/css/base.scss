@@ -47,7 +47,6 @@ display: none;
   display: flex;
   flex-direction: column;
   align-items: center;
-
 }
 
 .destination-card-image {
@@ -60,4 +59,14 @@ display: none;
 .request-button {
   width: 30%;
   height: 25px;
+}
+// User trips sections
+.current,
+.upcoming,
+.past,
+.pending {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  overflow-x: scroll;
 }
