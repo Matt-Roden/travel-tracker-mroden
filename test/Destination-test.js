@@ -5,15 +5,21 @@ import sampleData from './test-data'
 
 describe('Destinations', () => {
 let destinations
-let destinationsData = sampleData.destinations;
+let destinationsData
+
 
   beforeEach(() => {
+    destinationsData = sampleData;
     destinations = new Destination(destinationsData)
   });
 
   it('should be a function', () => {
     expect(Destination).to.be.a('function')
   });
+
+  it('should be an instance of destination', () => {
+    expect(destinations).to.be.an.instanceOf(Destination)
+  })
 
   it('should find a destination by an ID', () => {
     expect(destinations.findDestination(1)).to.deep.equal({
