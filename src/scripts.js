@@ -21,17 +21,20 @@ let destinations, allTrips, traveler, alltravelers
 
 getAllData()
   .then((data) => {
-    destinations = new Destination(data[0])
-    // console.log(destinations)
-    allTrips = createAllTrips(data[1], destinations)
+    destinations = new Destination(data[0]);
+    console.log(destinations);
+    allTrips = createAllTrips(data[1], destinations);
     // console.log(allTrips)
-    traveler = new Traveler(data[2], allTrips)
+    traveler = new Traveler(data[2], allTrips);
     // console.log(traveler)
-    renderAllDestinations()
+    renderAllDestinations(destinations);
   });
 
 const renderAllDestinations = (allDestinations) => {
-  domUpdateMethods.renderSingleDestination()
+  allDestinations.destinations.forEach((destination) => domUpdateMethods.renderSingleDestination(destination.id, destination.destination, destination.image, destination.alt))
+
+
+  //domUpdateMethods.renderSingleDestination()
 }
 
 const createAllTrips = (tripData, destinations)  => {
