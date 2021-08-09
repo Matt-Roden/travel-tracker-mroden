@@ -10,9 +10,10 @@ import Destination from './Destination'
 import Trip from './Trip'
 import Traveler from './Traveler'
 import getAllData from './apiCalls';
+import domUpdateMethods from './updateDOM'
 
-const todaysDate = (dayjs().format('YYYY/MM/DD'))
-console.log(todaysDate, 'today');
+// const todaysDate = (dayjs().format('YYYY/MM/DD'))
+// console.log(todaysDate, 'today');
 
 
 // console.log(date, 'date<><>')
@@ -26,8 +27,13 @@ getAllData()
     // console.log(allTrips)
     traveler = new Traveler(data[2], allTrips)
     // console.log(traveler)
+    renderAllDestinations()
   });
 
-function createAllTrips(tripData, destinations) {
+const renderAllDestinations = (allDestinations) => {
+  domUpdateMethods.renderSingleDestination()
+}
+
+const createAllTrips = (tripData, destinations)  => {
   return tripData.trips.map((trip) => new Trip(trip, destinations))
 }

@@ -7,10 +7,11 @@ console.log(todaysDate, 'todaybutt');
 
 
 
-const displayAllData = () => {
-  displayAllDestinations();
-};
+const domUpdateMethods = {
 
-const displayAllDestinations = () => {
+  renderSingleDestination() {
+    console.log('test!!!<><><>')
+  }
 
-}
+}; // END domUpdates
+export default domUpdateMethods;
