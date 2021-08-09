@@ -29,13 +29,16 @@ getAllData()
     traveler = new Traveler(data[2], allTrips, todaysDate);
     // console.log(traveler)
     renderAllDestinations(destinations);
+    displayAllUserTrips(traveler);
   });
 
 const renderAllDestinations = (allDestinations) => {
   allDestinations.destinations.forEach((destination) => domUpdateMethods.renderSingleDestination(destination.id, destination.destination, destination.image, destination.alt))
+}
 
-
-  //domUpdateMethods.renderSingleDestination()
+const displayAllUserTrips = (traveler) => {
+  console.log(traveler.trips, 'trips')
+  traveler.trips.forEach(trip => domUpdateMethods.renderUserTripsByStatus(trip.destinationName, trip.status, trip.picture, trip.altText))
 }
 
 const createAllTrips = (tripData, destinations)  => {
