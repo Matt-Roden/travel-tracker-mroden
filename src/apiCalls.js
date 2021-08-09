@@ -7,7 +7,7 @@ const getAllData = () => {
   return Promise.all([
     getData('destinations'),
     getData('trips'),
-    getData('travelers/1')
+    getData('travelers/44')
     // getData('travelers'),
   ]);
 };
