@@ -26,13 +26,16 @@ class Trip {
   }
   determineTripStatus(date) {
     let endDate = dayjs(this.startDate).add(this.duration, 'day').format('YYYY/MM/DD');
-    console.log(this.startDate, 'startDate<><>')
-    console.log(endDate, 'EndDate<><>')
-    console.log(date, 'date')
-    if(dayjs(date).isBetween(this.startDate, endDate, null, '[]') && this.status !== 'pending') {
-      return this.status = 'current';
-    }
 
+    if(dayjs(date).isBetween(this.startDate, endDate, null, '[]') && this.status !== 'pending') {
+      this.status = 'current';
+    }
+    if(dayjs(date).isAfter(this.startDate) && dayjs(date).isAfter(endDate) && this.status !== 'pending') {
+      this.status = 'past';
+    }
+    if(dayjs(date).isBefore(this.startDate) && this.status !== 'pending') {
+      this.status = 'upcoming'
+    }
   }
 }
 export default Trip;
