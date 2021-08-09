@@ -3,7 +3,6 @@ import { destinations, allTrips, traveler } from './scripts.js'
 var dayjs = require('dayjs')
 
 const todaysDate = (dayjs().format('YYYY/MM/DD'))
-console.log(todaysDate, 'todaybutt');
 
 
 
@@ -18,8 +17,34 @@ const domUpdateMethods = {
       <button class="request-button" type="checked" name="request-button" id="${id}">Request</button>
     </div>`;
     destinationsArea.insertAdjacentHTML('afterbegin', destinationCardHTML);
+  },
+  renderUserTripsByStatus(location, status, imageURL, altText) {
+    const currentTripsArea = document.getElementById('current_trips');
+    const upcomingTripsArea = document.getElementById('upcoming_trips');
+    const pastTripsArea = document.getElementById('past_trips');
+    const pendingTripsArea = document.getElementById('pending_trips');
 
-  }
+    const userTripsCardHTML = `<div class="card-wrapper">
+      <img src="${imageURL}" alt="${altText}" class="destination-card-image">
+      <p class="trips-card-location">${location}</p>
+      <p class="trips-card-status">${status}</p>
+    </div>`;
+
+    // currentTripsArea.insertAdjacentHTML('afterbegin', userTripsCardHTML)
+
+    if(status === 'current') {
+      currentTripsArea.insertAdjacentHTML('afterbegin', userTripsCardHTML)
+    }
+    if(status === 'upcoming') {
+      upcomingTripsArea.insertAdjacentHTML('afterbegin', userTripsCardHTML)
+    }
+    if(status === 'past') {
+      pastTripsArea.insertAdjacentHTML('afterbegin', userTripsCardHTML)
+    }
+    if(status === 'pending') {
+      pendingTripsArea.insertAdjacentHTML('afterbegin', userTripsCardHTML)
+    }
+  },
 
 }; // END domUpdates
 export default domUpdateMethods;

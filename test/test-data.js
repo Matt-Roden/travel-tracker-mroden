@@ -529,8 +529,38 @@ const sampleData = {
     "duration": 17,
     "status": "approved",
     "suggestedActivities": []
+  },
+  {
+    "id": 10,
+    "userID": 3,
+    "destinationID": 10,
+    "travelers": 6,
+    "date": "2020/07/23",
+    "duration": 17,
+    "status": "approved",
+    "suggestedActivities": []
+  },
+  {
+    "id": 11,
+    "userID": 5,
+    "destinationID": 10,
+    "travelers": 6,
+    "date": "2021/08/08",
+    "duration": 17,
+    "status": "approved",
+    "suggestedActivities": []
+  },
+  {
+    "id": 12,
+    "userID": 5,
+    "destinationID": 10,
+    "travelers": 6,
+    "date": "2023/08/08",
+    "duration": 17,
+    "status": "approved",
+    "suggestedActivities": []
   }
-  ],
+  ]
 }
 
 export default sampleData;

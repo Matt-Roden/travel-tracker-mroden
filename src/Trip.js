@@ -1,13 +1,16 @@
+import * as dayjs from 'dayjs';
+var isBetween = require('dayjs/plugin/isBetween');
+dayjs.extend(isBetween);
+
 class Trip {
   constructor(trip, destinations) {
-    // console.log(destinations, ',.,,.,')
     this.id = trip.id;
     this.travelerID = trip.userID;
     this.destinationID = trip.destinationID;
     this.travelersAmount = trip.travelers;
     this.startDate = trip.date;
     this.duration = trip.duration;
-    this.status = trip.status || 'pending';
+    this.status = trip.status;
     this.suggestedActivities = trip.suggestedActivities;
     this.destinationName = destinations.findDestination(trip.destinationID).destination;
     this.dailyLodgingCost = destinations.findDestination(trip.destinationID).estimatedLodgingCostPerDay;
@@ -20,9 +23,18 @@ class Trip {
     const fee = preFeeAmt * 0.1;
     return preFeeAmt + fee;
   }
-  // determineTripStatus() {
-  //   // if the status is not pending and the trip date is less than today's date - status = past
-  //   // if the status is not pending and the trip date is equal to todays date - status = current
-  // }
+  determineTripStatus(date) {
+    let endDate = dayjs(this.startDate).add(this.duration, 'day').format('YYYY/MM/DD');
+    
+    if(dayjs(date).isAfter(this.startDate) && dayjs(date).isAfter(endDate) && this.status !== 'pending') {
+      this.status = 'past';
+    }
+    if(dayjs(date).isBefore(this.startDate) && this.status !== 'pending') {
+      this.status = 'upcoming';
+    }
+    if(dayjs(date).isBetween(dayjs(this.startDate), dayjs(endDate), null, '[]') && this.status !== 'pending') {
+      this.status = 'current';
+    }
+  }
 }
 export default Trip;
