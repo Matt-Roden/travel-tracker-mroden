@@ -45,6 +45,11 @@ const domUpdateMethods = {
       pendingTripsArea.insertAdjacentHTML('afterbegin', userTripsCardHTML)
     }
   },
+  displayAmountSpentThisYear(traveler) {
+    const amountSpent = document.getElementById('yearly_amount_spent');
+
+    amountSpent.innerText = 
+  }
 
 }; // END domUpdates
 export default domUpdateMethods;
