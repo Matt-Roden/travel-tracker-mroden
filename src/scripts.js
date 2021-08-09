@@ -1,5 +1,5 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
+var dayjs = require('dayjs')
+//import dayjs from 'dayjs' // ES 2015
 
 // An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
@@ -11,6 +11,11 @@ import Trip from './Trip'
 import Traveler from './Traveler'
 import getAllData from './apiCalls';
 
+const todaysDate = (dayjs().format('YYYY/MM/DD'))
+console.log(todaysDate, 'today');
+
+
+// console.log(date, 'date<><>')
 let destinations, allTrips, traveler, alltravelers
 
 getAllData()
