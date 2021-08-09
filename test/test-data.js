@@ -549,6 +549,16 @@ const sampleData = {
     "duration": 17,
     "status": "approved",
     "suggestedActivities": []
+  },
+  {
+    "id": 12,
+    "userID": 1,
+    "destinationID": 10,
+    "travelers": 6,
+    "date": "2023/08/08",
+    "duration": 17,
+    "status": "approved",
+    "suggestedActivities": []
   }
   ]
 }
