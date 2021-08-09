@@ -92,8 +92,13 @@ let tripsData = sampleData.trips;
 
   it.only('should assign a new status to the current traveler\'s trips', () => {
     const trip3 = trips[11]
+    const trip4 = trips[12]
     trip3.determineTripStatus('2021/08/09');
+    trip1.determineTripStatus('2021/08/09');
+    trip4.determineTripStatus('2021/08/09');
     expect(trip3.status).to.equal('current');
+    expect(trip1.status).to.equal('past');
+    expect(trip4.status).to.equal('upcoming');
   });
 
 }); //END TEST
