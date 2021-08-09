@@ -20,16 +20,19 @@ import domUpdateMethods from './updateDOM'
 let destinations, allTrips, traveler, alltravelers
 const todaysDate = dayjs().format('YYYY/MM/DD');
 
+
+
 getAllData()
   .then((data) => {
     destinations = new Destination(data[0]);
-    console.log(destinations);
+    // console.log(destinations);
     allTrips = createAllTrips(data[1], destinations);
     // console.log(allTrips)
     traveler = new Traveler(data[2], allTrips, todaysDate);
     // console.log(traveler)
     renderAllDestinations(destinations);
     displayAllUserTrips(traveler);
+    domUpdateMethods.displayAmountSpentThisYear(traveler)
   });
 
 const renderAllDestinations = (allDestinations) => {
@@ -37,7 +40,7 @@ const renderAllDestinations = (allDestinations) => {
 }
 
 const displayAllUserTrips = (traveler) => {
-  console.log(traveler.trips, 'trips')
+  // console.log(traveler.trips, 'trips')
   traveler.trips.forEach(trip => domUpdateMethods.renderUserTripsByStatus(trip.destinationName, trip.status, trip.picture, trip.altText))
 }
 
