@@ -9,11 +9,10 @@ const domUpdateMethods = {
 
   renderSingleDestination(id, location, imageURL, altText) {
     const destinationsArea = document.getElementById('destination_selector')
-    // console.log(destinationsArea, '<><>')
     const destinationCardHTML = `<div class="card-wrapper">
       <img src="${imageURL}" alt="${altText}" class="destination-card-image">
-      <p class="destination-card-location">${location}</p>
-      <button class="request-button" type="checked" name="request-button" value="${location}" id="${id}">Request</button>
+      <p class="destination-card-location">${location} Trip#${id}</p>
+      <button class="request-button" type="checked" name="request-button" value="${id}" id="${id}">Request</button>
     </div>`;
     destinationsArea.insertAdjacentHTML('afterbegin', destinationCardHTML);
   },
@@ -28,8 +27,6 @@ const domUpdateMethods = {
       <p class="trips-card-location">${location}</p>
       <p class="trips-card-status">${status}</p>
     </div>`;
-
-    // currentTripsArea.insertAdjacentHTML('afterbegin', userTripsCardHTML)
 
     if(status === 'current') {
       currentTripsArea.insertAdjacentHTML('afterbegin', userTripsCardHTML)
@@ -48,7 +45,7 @@ const domUpdateMethods = {
     const amountSpent = document.getElementById('yearly_amount_spent');
 
     amountSpent.innerText = `${traveler.calculateTotalSpentThisYear(thisYear)}`
-  }
+  },
 
 }; // END domUpdates
 export default domUpdateMethods;

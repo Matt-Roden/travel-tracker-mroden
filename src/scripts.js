@@ -8,9 +8,6 @@ import Traveler from './Traveler'
 import { getAllData, postTrip } from './apiCalls';
 import domUpdateMethods from './updateDOM'
 
-let destinations, allTrips, traveler, selectedDestination
-const todaysDate = dayjs().format('YYYY/MM/DD');
-
 const requestForm = document.getElementById('request_form')
 const submitRequestButton = document.getElementById('submit_btn');
 const dateInput = document.querySelector('#date_input');
@@ -23,20 +20,19 @@ const usernameInput = document.getElementById('username_input');
 const passwordInput = document.getElementById('password_input');
 const loginScreen = document.getElementById('login_form');
 const mainPage = document.getElementById('main_page');
+// const destinationDropDown = document.getElementById('destinationSelect');
 
 
 
-// submitRequestButton.addEventListener('click', );
-allDestinationsInputSection.addEventListener('click', (event) => {
-  selectDestinationPriorToBooking(event);
-});
+submitRequestButton.addEventListener('click', loadUpdatedTripsData);
+allDestinationsInputSection.addEventListener('click', selectDestinationPriorToBooking);
 // calculateCostButton.addEventListener('click', );
-// dateInput.addEventListener('click', );
 // loginButton.addEventListener('click', );
-// requestForm.addEventListener('submit', (event) => {
-//   getFormData(event);
-// })
 
+let destinations, allTrips, traveler, selectedDestination
+const todaysDate = dayjs().format('YYYY/MM/DD');
+
+//Load Data model
 getAllData()
   .then((data) => {
     destinations = new Destination(data[0]);
@@ -48,48 +44,55 @@ getAllData()
     renderAllDestinations(destinations);
     displayAllUserTrips(traveler);
     domUpdateMethods.displayAmountSpentThisYear(traveler)
-    // console.log(traveler.id, 'id')
-    // postTrip(allTrips[0])
-    requestForm.addEventListener('submit', (event) => {
-      getFormData(event);
-    })
-
   });
 
+function loadUpdatedTripsData() {
+  let bookedTrip = instantiateNewTripObject();
+  Promise.all([postTrip(bookedTrip), getAllData()])
+  .then(data => {
+    allTrips = createAllTrips(data[1], destinations);
+    updateTravelersTrips();
+    })
 
-//Packaging my post object
-const getFormData = (event) => {
-  event.preventDefault();
-
-  const formData = new FormData(event.target);
-  const newTrip = {
-  id: ((allTrips.reverse()[0].id) + 1),
-  userID: traveler.id,
-  destinationID: formData.get(event.target),
-  travelers: JSON.parse(formData.get('travelers-selector')),
-  date: formData.get('date-selector'),
-  duration: JSON.parse(formData.get('duration-selector')),
-  // suggestedActivites: [];
+  const updateTravelersTrips = () => {
+    addPendingTripToTravelersTrips(bookedTrip);
+    displayAllUserTrips(traveler);
+    // domUpdates.displayMessageUponSuccessfulTripRequest(bookedTrip.destinationName);
   }
-  console.log(newTrip);
-  event.target.reset();
+
+  const addPendingTripToTravelersTrips = (pendingTrip) => {
+    traveler.trips.push(pendingTrip)
+  }
 }
 
+function returnTripWithTotalCostProperty() {
+  let tripToBeBooked = instantiateNewTripObject();
+  if(tripToBeBooked) {
+    tripToBeBooked.totalCostOfTrip = tripToBeBooked.calculateTotalTripCost();
+    return tripToBeBooked;
+  }
+}
 
-  // {
-  //   "id": 11,
-  //   "userID": 5,
-  //   "destinationID": 10,
-  //   "travelers": 6,
-  //   "date": "2021/08/08",
-  //   "duration": 17,
-  //   "status": "approved",
-  //   "suggestedActivities": []
-  // }
+const instantiateNewTripObject = () => {
+  if (selectedDestination) {
+    let tripData = allTrips.find(trip => trip.destinationID === selectedDestination.id)
+    let possibleTrip = new Trip(tripData, destinations);
+    let formattedTripDate = dayjs(dateInput.value).format('YYYY/MM/DD');
+    possibleTrip.id = ((allTrips.reverse()[0].id) + 1);
+    possibleTrip.userID = traveler.id;
+    possibleTrip.numberOfTravelers = travelersInput.value;
+    possibleTrip.date = formattedTripDate;
+    possibleTrip.duration = durationInput.value;
+    possibleTrip.status = 'pending';
+    return possibleTrip;
+  } //else {
+    //domUpdates.displayErrorMessageIfAnyInputHasNoValue()
+  //}
+}
 
-const selectDestinationPriorToBooking = (event) => {
-    event.preventDefault()
-    selectedDestination = destinations.findDestination(parseInt(event.target.id));
+function selectDestinationPriorToBooking(event) {
+  event.preventDefault(event);
+  selectedDestination = destinations.findDestination(parseInt(event.target.id));
   }
 
 const renderAllDestinations = (allDestinations) => {
@@ -97,7 +100,7 @@ const renderAllDestinations = (allDestinations) => {
 }
 
 const displayAllUserTrips = (traveler) => {
-  // console.log(traveler.trips, 'trips')
+  console.log(traveler.trips, 'trips')
   traveler.trips.forEach(trip => domUpdateMethods.renderUserTripsByStatus(trip.destinationName, trip.status, trip.picture, trip.altText))
 }
 
