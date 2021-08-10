@@ -45,22 +45,21 @@
       <div class="duration-picker-wrapper form-wrapper-div">
         <label for="duration-selector">How long will your trip be?</label>
         <div class="date-in-days-wrapper">
-          <input type="number" name="duration-selector" min="1" placeholder="1" id="duration_input">
+          <input type="number" name="duration-selector" min="1" placeholder="1" id="duration_input" class="number-input">
           <p class="text-for-duration">Days</p>
         </div>
-      </form>
+      </div>
+
 
       <div class="travelers-amount-wrapper form-wrapper-div">
         <label for="travelers-selector">How many travelers will there be?</label>
-        <input type="number" name="travelers-selector" min="1" placeholder="1" id="travelers_input">
+        <input type="number" name="travelers-selector" min="1" placeholder="1" id="travelers_input" class="number-input">
       </div>
 
-      <!-- <section class="destination-selector" id='destination_selector'></section> -->
       <secton id="destination_selector" class="destination-selector"></secton>
-      <button type="button" name="calculate-cost-button">Calculate Cost</button>
-      <button type="submit" name="submit-request-button" id="submit_btn">Submit</button>
+      <button type="submit" name="submit-request-button" id="submit_btn" class="submit-btn">Submit</button>
 
-    </div>
+    </form>
 
 <!-- Cards/Trips Sections -->
     <div class="trips-display-wrapper">

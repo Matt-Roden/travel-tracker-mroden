@@ -1,12 +1,17 @@
 /* This is an example of using Sass, otherwise plain CSS works too*/
 //$primary-background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
 ;
+// * {
+//   border: solid black 2px;
+// }
 
 body {
   margin: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 header {
@@ -17,6 +22,10 @@ header {
 
 form {
   border: dotted purple 3px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 section {
@@ -25,8 +34,39 @@ section {
   // width: 100vw;
 }
 
+//Request form styles
+.form-wrapper-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.date-picker-wrapper {
+  margin-top: 50px;
+  margin-bottom: 25px;
+}
+
+.duration-picker-wrapper {
+  // border: solid black 2px;
+}
+
+.date-in-days-wrapper,
+.travelers-amount-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.number-input {
+  height: 15px;
+  width: 45px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
 .destination-selector {
   border: solid red 3px;
+  margin-top: 25px;
   height: 350px;
   display: flex;
   justify-content: space-around;
@@ -34,9 +74,11 @@ section {
   overflow-x: scroll;
 }
 
-.hidden {
-display: none;
+.submit-btn {
+  margin: 25px 0 25px 0;
 }
+
+
 
 // Destination Card Styles
 
@@ -70,4 +112,11 @@ display: none;
   flex-wrap: wrap;
   justify-content: space-around;
   overflow-x: scroll;
+}
+
+
+
+
+.hidden {
+  display: none;
 }
