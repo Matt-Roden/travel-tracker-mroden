@@ -13,7 +13,7 @@ const domUpdateMethods = {
     const destinationCardHTML = `<div class="card-wrapper">
       <img src="${imageURL}" alt="${altText}" class="destination-card-image">
       <p class="destination-card-location">${location}</p>
-      <button class="request-button" type="checked" name="request-button" id="${id}">Request</button>
+      <button class="request-button" type="checked" name="request-button" value="${location}" id="${id}">Request</button>
     </div>`;
     destinationsArea.insertAdjacentHTML('afterbegin', destinationCardHTML);
   },

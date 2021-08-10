@@ -13,8 +13,30 @@ const getAllData = (id) => {
   return Promise.all([
     getData('destinations'),
     getData('trips'),
-    getTravelerData(id)
+    getTravelerData(44)
     // getData('travelers'),
   ]);
 };
-export default getAllData;
+
+const postTrip = (trip) => {
+  fetch('http://localhost:3001/api/v1/trips', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      'id': 220,
+      'userID': trip.travelerID,
+      'destinationID': trip.destinationID,
+      'travelers': trip.travelersAmount,
+      'date': trip.startDate,
+      'duration': trip.duration,
+      'status': trip.status,
+      'suggestedActivities': trip.suggestedActivities
+    }),
+  })
+  .then(response => response.json())
+  .then(data => console.log(data, '<><><>'))
+}
+
+export { getAllData, postTrip };
