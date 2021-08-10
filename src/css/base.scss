@@ -21,17 +21,27 @@ header {
 }
 
 form {
-  border: dotted purple 3px;
+  // border: dotted purple 3px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: white;
 }
 
 section {
-  border: solid black 3px;
+  // border: solid black 3px;
   height: 350px;
+  // margin: 150px 0 0 0;
   // width: 100vw;
+}
+
+input {
+  margin-top: 10px;
+}
+
+footer {
+  height: 200px;
 }
 
 //Request form styles
@@ -39,6 +49,7 @@ section {
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-radius: 0px;
 }
 
 .date-picker-wrapper {
@@ -55,6 +66,7 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 25px;
 }
 
 .number-input {
@@ -65,13 +77,14 @@ section {
 }
 
 .destination-selector {
-  border: solid red 3px;
+  // border: solid red 3px;
   margin-top: 25px;
   height: 350px;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
   overflow-x: scroll;
+  background-color: white;
 }
 
 .submit-btn {
@@ -81,19 +94,22 @@ section {
 
 
 // Destination Card Styles
-
-.card-wrapper {
-  border: solid blue 3px;
+.user-card-wrapper,
+.request-card-wrapper {
+  // border: solid blue 3px;
   margin: 5px;
   height: 300px;
   width: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: #ffffff;
+  box-shadow:  5px 5px 10px #8f8f8f,
+             -5px -5px 10px #ffffff;
 }
 
 .destination-card-image {
-  border: solid yellow 3px;
+  // border: solid yellow 3px;
   margin: 1px;
   width: 280px;
   height: 175px;
