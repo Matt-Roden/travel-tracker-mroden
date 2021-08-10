@@ -46,10 +46,13 @@ getAllData()
     domUpdateMethods.displayAmountSpentThisYear(traveler)
   });
 
-function loadUpdatedTripsData() {
+function loadUpdatedTripsData(event) {
+  event.preventDefault(event)
   let bookedTrip = instantiateNewTripObject();
-  Promise.all([postTrip(bookedTrip), getAllData()])
+  postTrip(bookedTrip);
+  getAllData()
   .then(data => {
+    console.log(data, '<<DATA>>')
     allTrips = createAllTrips(data[1], destinations);
     updateTravelersTrips();
     })
@@ -65,29 +68,21 @@ function loadUpdatedTripsData() {
   }
 }
 
-function returnTripWithTotalCostProperty() {
-  let tripToBeBooked = instantiateNewTripObject();
-  if(tripToBeBooked) {
-    tripToBeBooked.totalCostOfTrip = tripToBeBooked.calculateTotalTripCost();
-    return tripToBeBooked;
-  }
-}
-
 const instantiateNewTripObject = () => {
   if (selectedDestination) {
-    let tripData = allTrips.find(trip => trip.destinationID === selectedDestination.id)
-    let possibleTrip = new Trip(tripData, destinations);
-    let formattedTripDate = dayjs(dateInput.value).format('YYYY/MM/DD');
-    possibleTrip.id = ((allTrips.reverse()[0].id) + 1);
-    possibleTrip.userID = traveler.id;
-    possibleTrip.numberOfTravelers = travelersInput.value;
-    possibleTrip.date = formattedTripDate;
-    possibleTrip.duration = durationInput.value;
-    possibleTrip.status = 'pending';
+    return {
+      id: ((allTrips.reverse()[0].id) + 1),
+      userID: traveler.id,
+      destinationID: selectedDestination.id,
+      travelers: travelersInput.value,
+      date: dayjs(dateInput.value).format('YYYY/MM/DD'),
+      duration: durationInput.value,
+      status: 'pending',
+      suggestedActivities: []
+    }
+
     return possibleTrip;
-  } //else {
-    //domUpdates.displayErrorMessageIfAnyInputHasNoValue()
-  //}
+  }
 }
 
 function selectDestinationPriorToBooking(event) {

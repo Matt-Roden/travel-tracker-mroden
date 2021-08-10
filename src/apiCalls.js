@@ -1,6 +1,6 @@
 const getData = (suffix) => {
   return fetch(`http://localhost:3001/api/v1/${suffix}`)
-    .then((response) => response.json());
+    .then((response) => response.json())
 };
 
 const getTravelerData = (id) => {
@@ -14,29 +14,27 @@ const getAllData = (id) => {
     getData('destinations'),
     getData('trips'),
     getTravelerData(44)
-    // getData('travelers'),
   ]);
 };
 
-const postTrip = (trip) => {
+const postTrip = (tripRequestObject) => {
   fetch('http://localhost:3001/api/v1/trips', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({
-      'id': 220,
-      'userID': trip.travelerID,
-      'destinationID': trip.destinationID,
-      'travelers': trip.travelersAmount,
-      'date': trip.startDate,
-      'duration': trip.duration,
-      'status': trip.status,
-      'suggestedActivities': trip.suggestedActivities
-    }),
+    body: JSON.stringify(tripRequestObject),
   })
   .then(response => response.json())
-  .then(data => console.log(data, '<><><>'))
+  .then(data => console.log(data, 'DATA<><><>'))
 }
 
 export { getAllData, postTrip };
+// 'id': trip.id,
+// 'userID': trip.travelerID,
+// 'destinationID': trip.destinationID,
+// 'travelers': trip.travelersAmount,
+// 'date': trip.startDate,
+// 'duration': trip.duration,
+// 'status': trip.status,
+// 'suggestedActivities': trip.suggestedActivities
