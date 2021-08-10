@@ -20,9 +20,6 @@ const usernameInput = document.getElementById('username_input');
 const passwordInput = document.getElementById('password_input');
 const loginScreen = document.getElementById('login_form');
 const mainPage = document.getElementById('main_page');
-// const destinationDropDown = document.getElementById('destinationSelect');
-
-
 
 submitRequestButton.addEventListener('click', loadUpdatedTripsData);
 allDestinationsInputSection.addEventListener('click', selectDestinationPriorToBooking);
@@ -46,29 +43,34 @@ getAllData()
     domUpdateMethods.displayAmountSpentThisYear(traveler)
   });
 
-function loadUpdatedTripsData(event) {
-  event.preventDefault(event)
-  let bookedTrip = instantiateNewTripObject();
-  postTrip(bookedTrip);
-  getAllData()
-  .then(data => {
-    console.log(data, '<<DATA>>')
-    allTrips = createAllTrips(data[1], destinations);
-    updateTravelersTrips();
-    })
-
-  const updateTravelersTrips = () => {
+  const updateTravelersTrips = (bookedTrip) => {
     addPendingTripToTravelersTrips(bookedTrip);
     displayAllUserTrips(traveler);
-    // domUpdates.displayMessageUponSuccessfulTripRequest(bookedTrip.destinationName);
   }
 
   const addPendingTripToTravelersTrips = (pendingTrip) => {
     traveler.trips.push(pendingTrip)
   }
+
+const refreshData = (bookedTrip) => {
+  return getAllData()
+  .then(data => {
+    // console.log(data, '<<DATA>>')
+    allTrips = createAllTrips(data[1], destinations);
+    updateTravelersTrips(bookedTrip);
+    traveler = new Traveler(data[2], allTrips, todaysDate)
+    })
 }
 
-const instantiateNewTripObject = () => {
+
+function loadUpdatedTripsData(event) {
+  event.preventDefault(event)
+  let bookedTrip = makeNewTripObject();
+  postTrip(bookedTrip);
+  setTimeout(() => refreshData(bookedTrip), 3000)
+}
+
+const makeNewTripObject = () => {
   if (selectedDestination) {
     return {
       id: ((allTrips.reverse()[0].id) + 1),
@@ -80,8 +82,6 @@ const instantiateNewTripObject = () => {
       status: 'pending',
       suggestedActivities: []
     }
-
-    return possibleTrip;
   }
 }
 
@@ -102,3 +102,5 @@ const displayAllUserTrips = (traveler) => {
 const createAllTrips = (tripData, destinations)  => {
   return tripData.trips.map((trip) => new Trip(trip, destinations))
 }
+//Notes:
+//Currently posting. Only successfully rerendering the posted trip on page relaod. It shows up in the pending section on bottom of page
