@@ -7,8 +7,6 @@
   <title>Travel.Now ✈</title>
 </head>
 <body>
-
-  <!-- Login Page -->
   <div class="login-wrapper hidden">
     <header class="login-header">Login Header</header>
     <form class="login-form" id="login_form">
@@ -25,43 +23,28 @@
       </div>
     </form>
   </div>
-
-
-<!-- Main Section -->
   <main class=" main-page-wrapper">
-
-    <!-- Header Section -->
     <header>
       <p class="amount-spent" id="yearly_amount_spent"></p>
     </header>
-
-<!-- Form -->
     <form id='request_form' class="request-form" name="request-trip-form">
       <div class="date-picker-wrapper form-wrapper-div">
         <label for="date-selector">When would you like your trip to start?</label>
         <input type="date" role="form" id="date_input" name="date-selector">
       </div>
-
       <div class="duration-picker-wrapper form-wrapper-div">
         <label for="duration-selector">How long will your trip be?</label>
         <div class="date-in-days-wrapper">
           <input type="number" min="1" placeholder="1" id="duration_input" class="number-input" name="duration-selector">
-          <!-- <p class="text-for-duration">Days</p> -->
         </div>
       </div>
-
-
       <div class="travelers-amount-wrapper form-wrapper-div">
         <label for="travelers-selector">How many travelers will there be?</label>
         <input type="number" min="1" placeholder="1" id="travelers_input" class="number-input" name="travelers-selector">
       </div>
-
       <secton id="destination_selector" class="destination-selector"></secton>
       <button type="submit" id="submit_btn" class="submit-btn" name="submit-request-button">Submit</button>
-
     </form>
-
-<!-- Cards/Trips Sections -->
     <div class="trips-display-wrapper">
       <section class="divider">
         <img src="./images/sanFran1.jpg" alt="top of golden gate bridge">
@@ -81,10 +64,7 @@
       <section class="pending" id="pending_trips"></section>
     </div>
   </main>
-
-  <!-- Footer Section -->
   <footer></footer>
   <script src="bundle.js"></script>
-
 </body>
 </html>
