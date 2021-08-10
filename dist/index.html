@@ -39,13 +39,13 @@
     <form id='request_form' class="request-form" name="request-trip-form">
       <div class="date-picker-wrapper form-wrapper-div">
         <label for="date-selector">When would you like your trip to start?</label>
-        <input type="date" role="form" name="date-selector" id="date_input">
+        <input type="date" role="form" id="date_input" name="date-selector">
       </div>
 
       <div class="duration-picker-wrapper form-wrapper-div">
         <label for="duration-selector">How long will your trip be?</label>
         <div class="date-in-days-wrapper">
-          <input type="number" name="duration-selector" min="1" placeholder="1" id="duration_input" class="number-input">
+          <input type="number" min="1" placeholder="1" id="duration_input" class="number-input" name="duration-selector">
           <!-- <p class="text-for-duration">Days</p> -->
         </div>
       </div>
@@ -53,11 +53,11 @@
 
       <div class="travelers-amount-wrapper form-wrapper-div">
         <label for="travelers-selector">How many travelers will there be?</label>
-        <input type="number" name="travelers-selector" min="1" placeholder="1" id="travelers_input" class="number-input">
+        <input type="number" min="1" placeholder="1" id="travelers_input" class="number-input" name="travelers-selector">
       </div>
 
       <secton id="destination_selector" class="destination-selector"></secton>
-      <button type="submit" name="submit-request-button" id="submit_btn" class="submit-btn">Submit</button>
+      <button type="submit" id="submit_btn" class="submit-btn" name="submit-request-button">Submit</button>
 
     </form>
 
