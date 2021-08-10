@@ -26,7 +26,7 @@ allDestinationsInputSection.addEventListener('click', selectDestinationPriorToBo
 // calculateCostButton.addEventListener('click', );
 // loginButton.addEventListener('click', );
 
-let destinations, allTrips, traveler, selectedDestination
+let destinations, allTrips, traveler, selectedDestination, bookedTrip
 const todaysDate = dayjs().format('YYYY/MM/DD');
 
 //Load Data model
@@ -40,6 +40,7 @@ getAllData()
     // console.log(traveler)
     renderAllDestinations(destinations);
     displayAllUserTrips(traveler);
+
     domUpdateMethods.displayAmountSpentThisYear(traveler)
   });
 
@@ -52,22 +53,11 @@ getAllData()
     traveler.trips.push(pendingTrip)
   }
 
-const refreshData = (bookedTrip) => {
-  return getAllData()
-  .then(data => {
-    // console.log(data, '<<DATA>>')
-    allTrips = createAllTrips(data[1], destinations);
-    updateTravelersTrips(bookedTrip);
-    traveler = new Traveler(data[2], allTrips, todaysDate)
-    })
-}
-
-
 function loadUpdatedTripsData(event) {
   event.preventDefault(event)
-  let bookedTrip = makeNewTripObject();
+  bookedTrip = makeNewTripObject();
   postTrip(bookedTrip);
-  setTimeout(() => refreshData(bookedTrip), 3000)
+  location.reload();
 }
 
 const makeNewTripObject = () => {
@@ -95,7 +85,8 @@ const renderAllDestinations = (allDestinations) => {
 }
 
 const displayAllUserTrips = (traveler) => {
-  console.log(traveler.trips, 'trips')
+  // console.log(traveler.trips, 'trips')
+  console.log(traveler.trips, '<><>')
   traveler.trips.forEach(trip => domUpdateMethods.renderUserTripsByStatus(trip.destinationName, trip.status, trip.picture, trip.altText))
 }
 
