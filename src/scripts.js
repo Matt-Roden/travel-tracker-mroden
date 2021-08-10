@@ -23,7 +23,6 @@ const mainPage = document.getElementById('main_page');
 
 submitRequestButton.addEventListener('click', loadUpdatedTripsData);
 allDestinationsInputSection.addEventListener('click', selectDestinationPriorToBooking);
-// calculateCostButton.addEventListener('click', );
 // loginButton.addEventListener('click', );
 
 let destinations, allTrips, traveler, selectedDestination, bookedTrip
