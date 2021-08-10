@@ -1,12 +1,17 @@
 /* This is an example of using Sass, otherwise plain CSS works too*/
 //$primary-background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
 ;
+// * {
+//   border: solid black 2px;
+// }
 
 body {
   margin: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 header {
@@ -16,42 +21,102 @@ header {
 }
 
 form {
-  border: dotted purple 3px;
+  // border: dotted purple 3px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
 }
 
 section {
-  border: solid black 3px;
   height: 350px;
-  // width: 100vw;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+input {
+  margin-top: 10px;
+}
+
+footer {
+  height: 200px;
+}
+
+img {
+  width: 100%;
+  height: 315px;
+}
+
+//Request form styles
+.form-wrapper-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 0px;
+}
+
+.date-picker-wrapper {
+  margin-top: 50px;
+  margin-bottom: 25px;
+}
+
+.duration-picker-wrapper {
+  // border: solid black 2px;
+}
+
+.date-in-days-wrapper,
+.travelers-amount-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.number-input {
+  height: 15px;
+  width: 45px;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
 .destination-selector {
-  border: solid red 3px;
+  // border: solid red 3px;
+  margin-top: 25px;
   height: 350px;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
   overflow-x: scroll;
+  background-color: white;
 }
 
-.hidden {
-display: none;
+.submit-btn {
+  margin: 25px 0 25px 0;
+  font-size: 25px;
+  height: 40px;
+  width: 155px;
 }
+
+
 
 // Destination Card Styles
-
-.card-wrapper {
-  border: solid blue 3px;
+.user-card-wrapper,
+.request-card-wrapper {
+  // border: solid blue 3px;
   margin: 5px;
   height: 300px;
   width: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: #ffffff;
+  box-shadow:  5px 5px 10px #8f8f8f,
+             -5px -5px 10px #ffffff;
 }
 
 .destination-card-image {
-  border: solid yellow 3px;
+  // border: solid yellow 3px;
   margin: 1px;
   width: 280px;
   height: 175px;
@@ -70,4 +135,11 @@ display: none;
   flex-wrap: wrap;
   justify-content: space-around;
   overflow-x: scroll;
+}
+
+
+
+
+.hidden {
+  display: none;
 }

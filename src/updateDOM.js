@@ -9,7 +9,7 @@ const domUpdateMethods = {
 
   renderSingleDestination(id, location, imageURL, altText) {
     const destinationsArea = document.getElementById('destination_selector')
-    const destinationCardHTML = `<div class="card-wrapper">
+    const destinationCardHTML = `<div class="request-card-wrapper">
       <img src="${imageURL}" alt="${altText}" class="destination-card-image">
       <p class="destination-card-location">${location}</p>
       <button class="request-button" type="checked" name="request-button" id="${id}">Request</button>
@@ -22,7 +22,7 @@ const domUpdateMethods = {
     const pastTripsArea = document.getElementById('past_trips');
     const pendingTripsArea = document.getElementById('pending_trips');
 
-    const userTripsCardHTML = `<div class="card-wrapper">
+    const userTripsCardHTML = `<div class="user-card-wrapper">
       <img src="${imageURL}" alt="${altText}" class="destination-card-image">
       <p class="trips-card-location">${location}</p>
       <p class="trips-card-status">${status}</p>

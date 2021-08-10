@@ -2,6 +2,11 @@ var dayjs = require('dayjs')
 
 import './css/base.scss';
 
+import './images/sanFran1.jpg';
+import './images/planewindow.jpg';
+import './images/bwCar.jpg';
+import './images/boatView.jpg';
+
 import Destination from './Destination'
 import Trip from './Trip'
 import Traveler from './Traveler'
@@ -23,7 +28,6 @@ const mainPage = document.getElementById('main_page');
 
 submitRequestButton.addEventListener('click', loadUpdatedTripsData);
 allDestinationsInputSection.addEventListener('click', selectDestinationPriorToBooking);
-// calculateCostButton.addEventListener('click', );
 // loginButton.addEventListener('click', );
 
 let destinations, allTrips, traveler, selectedDestination, bookedTrip

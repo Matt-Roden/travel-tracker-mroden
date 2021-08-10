@@ -7,8 +7,6 @@
   <title>Travel.Now ✈</title>
 </head>
 <body>
-
-  <!-- Login Page -->
   <div class="login-wrapper hidden">
     <header class="login-header">Login Header</header>
     <form class="login-form" id="login_form">
@@ -25,55 +23,48 @@
       </div>
     </form>
   </div>
-
-
-<!-- Main Section -->
   <main class=" main-page-wrapper">
-
-    <!-- Header Section -->
     <header>
       <p class="amount-spent" id="yearly_amount_spent"></p>
     </header>
-
-<!-- Form -->
-    <form id='request_form' class="request-form">
+    <form id='request_form' class="request-form" name="request-trip-form">
       <div class="date-picker-wrapper form-wrapper-div">
         <label for="date-selector">When would you like your trip to start?</label>
-        <input type="date" name="date-selector" id="date_input">
+        <input type="date" role="form" id="date_input" name="date-selector">
       </div>
-
       <div class="duration-picker-wrapper form-wrapper-div">
         <label for="duration-selector">How long will your trip be?</label>
         <div class="date-in-days-wrapper">
-          <input type="number" name="duration-selector" min="1" placeholder="1" id="duration_input">
-          <p class="text-for-duration">Days</p>
+          <input type="number" min="1" placeholder="1" id="duration_input" class="number-input" name="duration-selector">
         </div>
-      </form>
-
+      </div>
       <div class="travelers-amount-wrapper form-wrapper-div">
         <label for="travelers-selector">How many travelers will there be?</label>
-        <input type="number" name="travelers-selector" min="1" placeholder="1" id="travelers_input">
+        <input type="number" min="1" placeholder="1" id="travelers_input" class="number-input" name="travelers-selector">
       </div>
-
-      <!-- <section class="destination-selector" id='destination_selector'></section> -->
       <secton id="destination_selector" class="destination-selector"></secton>
-      <button type="button" name="calculate-cost-button">Calculate Cost</button>
-      <button type="submit" name="submit-request-button" id="submit_btn">Submit</button>
-
-    </div>
-
-<!-- Cards/Trips Sections -->
+      <button type="submit" id="submit_btn" class="submit-btn" name="submit-request-button">Submit</button>
+    </form>
     <div class="trips-display-wrapper">
-      <section class="current" id="current_trips">Current Trips</section>
-      <section class="upcoming" id="upcoming_trips">Upcoming Trips</section>
-      <section class="past" id="past_trips">Past Trips</section>
-      <section class="pending" id="pending_trips">Pending Trips</section>
+      <section class="divider">
+        <img src="./images/sanFran1.jpg" alt="top of golden gate bridge">
+      </section>
+      <section class="current" id="current_trips"></section>
+      <section class="divider">
+        <img src="./images/planewindow.jpg" alt="looking out of a plane window">
+      </section>
+      <section class="upcoming" id="upcoming_trips"></section>
+      <section class="divider">
+        <img src="./images/bwCar.jpg" alt="people traveling in a car">
+      </section>
+      <section class="past" id="past_trips"></section>
+      <section class="divider">
+        <img src="./images/boatView.jpg" alt="view of mountains from a row boat">
+      </section>
+      <section class="pending" id="pending_trips"></section>
     </div>
   </main>
-
-  <!-- Footer Section -->
   <footer></footer>
   <script src="bundle.js"></script>
-
 </body>
 </html>
