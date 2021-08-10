@@ -2,6 +2,11 @@ var dayjs = require('dayjs')
 
 import './css/base.scss';
 
+import './images/sanFran1.jpg';
+import './images/planewindow.jpg';
+import './images/bwCar.jpg';
+import './images/boatView.jpg';
+
 import Destination from './Destination'
 import Trip from './Trip'
 import Traveler from './Traveler'
