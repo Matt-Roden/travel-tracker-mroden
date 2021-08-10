@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack Starter Kit</title>
+  <title>Travel.Now ✈</title>
 </head>
 <body>
 
@@ -39,27 +39,28 @@
     <form id='request_form' class="request-form">
       <div class="date-picker-wrapper form-wrapper-div">
         <label for="date-selector">When would you like your trip to start?</label>
-        <input type="date" name="date-selector">
+        <input type="date" name="date-selector" id="date_input">
       </div>
 
       <div class="duration-picker-wrapper form-wrapper-div">
         <label for="duration-selector">How long will your trip be?</label>
         <div class="date-in-days-wrapper">
-          <input type="number" name="duration-selector" value="0">
+          <input type="number" name="duration-selector" min="1" placeholder="1" id="duration_input">
           <p class="text-for-duration">Days</p>
         </div>
-      </div>
+      </form>
 
       <div class="travelers-amount-wrapper form-wrapper-div">
         <label for="travelers-selector">How many travelers will there be?</label>
-        <input type="number" name="travelers-selector" value="1">
+        <input type="number" name="travelers-selector" min="1" placeholder="1" id="travelers_input">
       </div>
 
-      <section class="destination-selector" id='destination_selector'></section>
+      <!-- <section class="destination-selector" id='destination_selector'></section> -->
+      <secton id="destination_selector" class="destination-selector"></secton>
+      <button type="button" name="calculate-cost-button">Calculate Cost</button>
+      <button type="submit" name="submit-request-button" id="submit_btn">Submit</button>
 
-      <button type="submit" name="submit-request-button">Submit</button>
-
-    </form>
+    </div>
 
 <!-- Cards/Trips Sections -->
     <div class="trips-display-wrapper">

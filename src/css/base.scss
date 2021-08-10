@@ -21,12 +21,13 @@ form {
 
 section {
   border: solid black 3px;
-  height: 350px;;
+  height: 350px;
   // width: 100vw;
 }
 
 .destination-selector {
   border: solid red 3px;
+  height: 350px;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
