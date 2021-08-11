@@ -26,15 +26,17 @@ const passwordInput = document.getElementById('password_input');
 const loginScreen = document.getElementById('login_form');
 const mainPage = document.getElementById('main_page');
 
-submitRequestButton.addEventListener('click', loadUpdatedTripsData);
+submitRequestButton.addEventListener('click', function() {
+  (loadUpdatedTripsData());
+});
 allDestinationsInputSection.addEventListener('click', selectDestinationPriorToBooking);
 loginButton.addEventListener('click', validateLoginForm);
 
-let destinations, allTrips, traveler, selectedDestination, bookedTrip
+let destinations, allTrips, traveler, selectedDestination, bookedTrip, id
 const todaysDate = dayjs().format('YYYY/MM/DD');
 
 //Load Data model
-const loadDataAfterLogin = (id) => {
+function loadDataAfterLogin(id) {
   getAllData(id)
     .then((data) => {
       destinations = new Destination(data[0]);
@@ -64,24 +66,42 @@ function validateLoginForm(event) {
   }
 }
 
-const updateTravelersTrips = (bookedTrip) => {
+function updateTravelersTrips(bookedTrip) {
   addPendingTripToTravelersTrips(bookedTrip);
   displayAllUserTrips(traveler);
 }
 
-const addPendingTripToTravelersTrips = (pendingTrip) => {
+function addPendingTripToTravelersTrips(pendingTrip) {
   traveler.trips.push(pendingTrip)
 }
 
-function loadUpdatedTripsData(event) {
-  event.preventDefault(event)
+function loadUpdatedTripsData() {
+  event.preventDefault()
   bookedTrip = makeNewTripObject();
   postTrip(bookedTrip);
-  location.reload();
-  domUpdateMethods.displayTripCostEstimate(allTrips.reverse()[0].calculateTripCost())
+  console.log(traveler.id, '<><>')
+  id = traveler.id
+  // loadDataAfterLogin(traveler.id);
+  // displayAllUserTrips(traveler);
+  // getAllData(traveler.id)
+  getAllData(id)
+    .then((data) => {
+      destinations = new Destination(data[0]);
+      // console.log(destinations);
+      allTrips = createAllTrips(data[1], destinations);
+      // console.log(allTrips)
+      traveler = new Traveler(data[2], allTrips, todaysDate);
+      // console.log(traveler)
+      renderAllDestinations(destinations);
+      displayAllUserTrips(traveler);
+      domUpdateMethods.displayAmountSpentThisYear(traveler)
+  })
+
+  // location.reload();
+  // domUpdateMethods.displayTripCostEstimate(allTrips.reverse()[0].calculateTripCost())
 }
 
-const makeNewTripObject = () => {
+function makeNewTripObject() {
   if (selectedDestination) {
     return {
       id: ((allTrips.reverse()[0].id) + 1),
@@ -96,21 +116,21 @@ const makeNewTripObject = () => {
   }
 }
 
-function selectDestinationPriorToBooking(event) {
-  event.preventDefault(event);
+function selectDestinationPriorToBooking() {
+  event.preventDefault();
   selectedDestination = destinations.findDestination(parseInt(event.target.id));
 }
 
-const renderAllDestinations = (allDestinations) => {
+function renderAllDestinations(allDestinations) {
   allDestinations.destinations.forEach((destination) => domUpdateMethods.renderSingleDestination(destination.id, destination.destination, destination.image, destination.alt))
 }
 
-const displayAllUserTrips = (traveler) => {
+function displayAllUserTrips(traveler) {
   // console.log(traveler.trips, 'trips')
-  console.log(traveler.trips, '<><>')
+  // console.log(traveler.trips, '<><>')
   traveler.trips.forEach(trip => domUpdateMethods.renderUserTripsByStatus(trip.destinationName, trip.status, trip.picture, trip.altText))
 }
 
-const createAllTrips = (tripData, destinations)  => {
+function createAllTrips(tripData, destinations) {
   return tripData.trips.map((trip) => new Trip(trip, destinations))
 }
