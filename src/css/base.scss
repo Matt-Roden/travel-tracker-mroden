@@ -9,9 +9,9 @@ body {
 }
 
 header {
-  // border: solid black 3px;
   height: 100px;
   @include flex-column-center;
+  justify-content: center;
 }
 
 form {
