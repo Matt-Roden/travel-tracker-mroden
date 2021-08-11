@@ -46,6 +46,10 @@ const domUpdateMethods = {
 
     amountSpent.innerText = `${traveler.calculateTotalSpentThisYear(thisYear)}`
   },
+  displayLoginErrorMessage() {
+    const errorMessage = document.querySelector('.login-header');
+    errorMessage.innerText = 'Oops! Looks like your Username or Password is incorrect, please try again.';
+  }
 
 }; // END domUpdates
 export default domUpdateMethods;

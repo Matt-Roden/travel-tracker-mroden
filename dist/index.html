@@ -7,23 +7,23 @@
   <title>Travel.Now ✈</title>
 </head>
 <body>
-  <div class="login-wrapper hidden">
-    <header class="login-header">Login Header</header>
+  <div class="login-wrapper" id="login_form">
+    <header class="login-header"></header>
     <form class="login-form" id="login_form">
       <div class="username-wrapper">
         <label for="username">Username</label>
-        <input type="text" name="username" placeholder="traveler...">
+        <input type="text" id="username_input" name="username" placeholder="traveler...">
       </div>
       <div class="password-wrapper">
         <label for="password">Password</label>
-        <input type="text" name="password" placeholder="Password">
+        <input type="text" id="password_input" name="password" placeholder="Password">
       </div>
       <div class="login-submit">
-        <button type="submit" name="login" id="login_submit">Login</button>
+        <button type="submit" name="login" id="login_submit" class="login-btn">Login</button>
       </div>
     </form>
   </div>
-  <main class=" main-page-wrapper">
+  <main class=" main-page-wrapper hidden" id="main_page">
     <header>
       <p class="amount-spent" id="yearly_amount_spent"></p>
     </header>
