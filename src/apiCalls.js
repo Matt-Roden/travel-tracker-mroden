@@ -30,11 +30,3 @@ const postTrip = (tripRequestObject) => {
 }
 
 export { getAllData, postTrip };
-// 'id': trip.id,
-// 'userID': trip.travelerID,
-// 'destinationID': trip.destinationID,
-// 'travelers': trip.travelersAmount,
-// 'date': trip.startDate,
-// 'duration': trip.duration,
-// 'status': trip.status,
-// 'suggestedActivities': trip.suggestedActivities
