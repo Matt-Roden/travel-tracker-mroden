@@ -28,34 +28,50 @@ const mainPage = document.getElementById('main_page');
 
 submitRequestButton.addEventListener('click', loadUpdatedTripsData);
 allDestinationsInputSection.addEventListener('click', selectDestinationPriorToBooking);
-// loginButton.addEventListener('click', );
+loginButton.addEventListener('click', validateLoginForm);
 
 let destinations, allTrips, traveler, selectedDestination, bookedTrip
 const todaysDate = dayjs().format('YYYY/MM/DD');
 
 //Load Data model
-getAllData()
-  .then((data) => {
-    destinations = new Destination(data[0]);
-    // console.log(destinations);
-    allTrips = createAllTrips(data[1], destinations);
-    // console.log(allTrips)
-    traveler = new Traveler(data[2], allTrips, todaysDate);
-    // console.log(traveler)
-    renderAllDestinations(destinations);
-    displayAllUserTrips(traveler);
-
-    domUpdateMethods.displayAmountSpentThisYear(traveler)
+const loadDataAfterLogin = (id) => {
+  getAllData(id)
+    .then((data) => {
+      destinations = new Destination(data[0]);
+      // console.log(destinations);
+      allTrips = createAllTrips(data[1], destinations);
+      // console.log(allTrips)
+      traveler = new Traveler(data[2], allTrips, todaysDate);
+      // console.log(traveler)
+      renderAllDestinations(destinations);
+      displayAllUserTrips(traveler);
+      domUpdateMethods.displayAmountSpentThisYear(traveler)
   });
+}
 
-  const updateTravelersTrips = (bookedTrip) => {
-    addPendingTripToTravelersTrips(bookedTrip);
-    displayAllUserTrips(traveler);
+function validateLoginForm(event) {
+  event.preventDefault();
+  let userIDNumber = parseInt(usernameInput.value.split('traveler')[1]);
+  console.log(userIDNumber);
+  if (usernameInput.value) {
+    if (!userIDNumber || userIDNumber < 1 || userIDNumber > 50 || passwordInput.value !== 'travel') {
+      domUpdateMethods.displayLoginErrorMessage();
+    } else {
+      loginScreen.classList.add('hidden');
+      mainPage.classList.remove('hidden');
+      loadDataAfterLogin(userIDNumber);
+    }
   }
+}
 
-  const addPendingTripToTravelersTrips = (pendingTrip) => {
-    traveler.trips.push(pendingTrip)
-  }
+const updateTravelersTrips = (bookedTrip) => {
+  addPendingTripToTravelersTrips(bookedTrip);
+  displayAllUserTrips(traveler);
+}
+
+const addPendingTripToTravelersTrips = (pendingTrip) => {
+  traveler.trips.push(pendingTrip)
+}
 
 function loadUpdatedTripsData(event) {
   event.preventDefault(event)
@@ -82,7 +98,7 @@ const makeNewTripObject = () => {
 function selectDestinationPriorToBooking(event) {
   event.preventDefault(event);
   selectedDestination = destinations.findDestination(parseInt(event.target.id));
-  }
+}
 
 const renderAllDestinations = (allDestinations) => {
   allDestinations.destinations.forEach((destination) => domUpdateMethods.renderSingleDestination(destination.id, destination.destination, destination.image, destination.alt))
@@ -97,5 +113,3 @@ const displayAllUserTrips = (traveler) => {
 const createAllTrips = (tripData, destinations)  => {
   return tripData.trips.map((trip) => new Trip(trip, destinations))
 }
-//Notes:
-//Currently posting. Only successfully rerendering the posted trip on page relaod. It shows up in the pending section on bottom of page
