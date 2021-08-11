@@ -44,7 +44,7 @@ function loadDataAfterLogin(id) {
       allTrips = createAllTrips(data[1], destinations);
       // console.log(allTrips)
       traveler = new Traveler(data[2], allTrips, todaysDate);
-      // console.log(traveler)
+      console.log(traveler)
       renderAllDestinations(destinations);
       displayAllUserTrips(traveler);
       domUpdateMethods.displayAmountSpentThisYear(traveler)
@@ -84,19 +84,8 @@ function loadUpdatedTripsData() {
   // loadDataAfterLogin(traveler.id);
   // displayAllUserTrips(traveler);
   // getAllData(traveler.id)
-  getAllData(id)
-    .then((data) => {
-      destinations = new Destination(data[0]);
-      // console.log(destinations);
-      allTrips = createAllTrips(data[1], destinations);
-      // console.log(allTrips)
-      traveler = new Traveler(data[2], allTrips, todaysDate);
-      // console.log(traveler)
-      renderAllDestinations(destinations);
-      displayAllUserTrips(traveler);
-      domUpdateMethods.displayAmountSpentThisYear(traveler)
-  })
-
+  updateTravelersTrips(bookedTrip);
+  setTimeout(loadDataAfterLogin(id), 2500);
   // location.reload();
   // domUpdateMethods.displayTripCostEstimate(allTrips.reverse()[0].calculateTripCost())
 }
