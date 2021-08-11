@@ -76,8 +76,15 @@ function loadUpdatedTripsData() {
   bookedTrip = makeNewTripObject();
   postTrip(bookedTrip);
   id = traveler.id
+  displayTripCostEstimate(bookedTrip, destinations)
   updateTravelersTrips(bookedTrip);
   loadDataAfterLogin(id);
+}
+
+function displayTripCostEstimate(trip, destinations) {
+  let requestedTrip = new Trip(trip, destinations);
+  const tripCost = document.getElementById('trip_cost');
+  tripCost.innerText = `Estimated Trip Cost: $${requestedTrip.calculateTripCost()}`
 }
 
 function makeNewTripObject() {
