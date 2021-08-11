@@ -47,15 +47,19 @@ describe('Traveler', () => {
 
   it('should know all of it\'s trips', () => {
     expect(traveler1.trips.length).to.equal(6);
+    expect(traveler1.trips.length).to.be.a('number');
   });
 
   it('should calculate the total spent on trips this year', () => {
     expect(traveler1.calculateTotalSpentThisYear('2021')).to.equal('You have spent $9900 on trips so far this year!')
+    expect(traveler1.calculateTotalSpentThisYear('2021')).to.be.a('string')
   });
 
   it('should know the updated status of all it\'s trips', () => {
     expect(traveler1.trips[0].status).to.equal('past');
     expect(traveler1.trips[1].status).to.equal('pending');
+    expect(traveler1.trips[0].status).to.be.a('string');
+    expect(traveler1.trips[1].status).to.be.a('string');
   });
 
 });

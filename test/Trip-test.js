@@ -72,6 +72,8 @@ let tripsData = sampleData.trips;
   it('should have some suggested actvities', () => {
     expect(trip1.suggestedActivities).to.deep.equal([]);
     expect(trip2.suggestedActivities).to.deep.equal([]);
+    expect(trip1.suggestedActivities).to.be.an('array');
+    expect(trip2.suggestedActivities).to.be.an('array');
   });
 
   it('should know the name of the destination', () => {
@@ -112,6 +114,8 @@ let tripsData = sampleData.trips;
   it('should calculate the total trip cost', () => {
     expect(trip1.calculateTripCost()).to.equal(1056);
     expect(trip2.calculateTripCost()).to.equal(14190);
+    expect(trip1.calculateTripCost()).to.be.a('number');
+    expect(trip2.calculateTripCost()).to.be.a('number');
   });
 
   it('should assign a new status to the current traveler\'s trips', () => {
@@ -123,6 +127,9 @@ let tripsData = sampleData.trips;
     expect(trip3.status).to.equal('current');
     expect(trip1.status).to.equal('past');
     expect(trip4.status).to.equal('upcoming');
+    expect(trip3.status).to.be.a('string');
+    expect(trip1.status).to.be.a('string');
+    expect(trip4.status).to.be.a('string');
   });
 
 }); //END TEST
