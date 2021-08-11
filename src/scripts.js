@@ -74,7 +74,6 @@ function addPendingTripToTravelersTrips(pendingTrip) {
 function loadUpdatedTripsData() {
   event.preventDefault()
   bookedTrip = makeNewTripObject();
-
   postTrip(bookedTrip);
   id = traveler.id
   updateTravelersTrips(bookedTrip);

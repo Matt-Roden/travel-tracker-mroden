@@ -27,16 +27,22 @@ describe('Traveler', () => {
   it('should have an ID', () => {
     expect(traveler1.id).to.equal(1)
     expect(traveler2.id).to.equal(2)
+    expect(traveler1.id).to.be.a('number')
+    expect(traveler2.id).to.be.a('number')
   });
 
   it('should have a name', () => {
     expect(traveler1.name).to.equal('Ham Leadbeater')
     expect(traveler2.name).to.equal('Rachael Vaughten')
+    expect(traveler1.name).to.be.a('string')
+    expect(traveler2.name).to.be.a('string')
   });
 
   it('should have a type', () => {
     expect(traveler1.type).to.equal('relaxer')
     expect(traveler2.type).to.equal('thrill-seeker')
+    expect(traveler1.type).to.be.a('string')
+    expect(traveler2.type).to.be.a('string')
   });
 
   it('should know all of it\'s trips', () => {
