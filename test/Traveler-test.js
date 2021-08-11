@@ -27,29 +27,39 @@ describe('Traveler', () => {
   it('should have an ID', () => {
     expect(traveler1.id).to.equal(1)
     expect(traveler2.id).to.equal(2)
+    expect(traveler1.id).to.be.a('number')
+    expect(traveler2.id).to.be.a('number')
   });
 
   it('should have a name', () => {
     expect(traveler1.name).to.equal('Ham Leadbeater')
     expect(traveler2.name).to.equal('Rachael Vaughten')
+    expect(traveler1.name).to.be.a('string')
+    expect(traveler2.name).to.be.a('string')
   });
 
   it('should have a type', () => {
     expect(traveler1.type).to.equal('relaxer')
     expect(traveler2.type).to.equal('thrill-seeker')
+    expect(traveler1.type).to.be.a('string')
+    expect(traveler2.type).to.be.a('string')
   });
 
   it('should know all of it\'s trips', () => {
     expect(traveler1.trips.length).to.equal(6);
+    expect(traveler1.trips.length).to.be.a('number');
   });
 
   it('should calculate the total spent on trips this year', () => {
     expect(traveler1.calculateTotalSpentThisYear('2021')).to.equal('You have spent $9900 on trips so far this year!')
+    expect(traveler1.calculateTotalSpentThisYear('2021')).to.be.a('string')
   });
 
   it('should know the updated status of all it\'s trips', () => {
     expect(traveler1.trips[0].status).to.equal('past');
     expect(traveler1.trips[1].status).to.equal('pending');
+    expect(traveler1.trips[0].status).to.be.a('string');
+    expect(traveler1.trips[1].status).to.be.a('string');
   });
 
 });
