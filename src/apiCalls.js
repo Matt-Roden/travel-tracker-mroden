@@ -25,16 +25,16 @@ const postTrip = (tripRequestObject) => {
     },
     body: JSON.stringify(tripRequestObject),
   })
-  .then(response => response.json())
+  .then(response => checkForError(response))
   .then(data => console.log(data, 'DATA<><><>'))
 }
 
+const checkForError = (response) => {
+  if (!response.ok) {
+    throw new Error("Please make sure that all fields are filled out and that the POST path is correct");
+  } else {
+    return response.json()
+  }
+}
+
 export { getAllData, postTrip };
-// 'id': trip.id,
-// 'userID': trip.travelerID,
-// 'destinationID': trip.destinationID,
-// 'travelers': trip.travelersAmount,
-// 'date': trip.startDate,
-// 'duration': trip.duration,
-// 'status': trip.status,
-// 'suggestedActivities': trip.suggestedActivities

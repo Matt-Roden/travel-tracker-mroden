@@ -1,32 +1,23 @@
-/* This is an example of using Sass, otherwise plain CSS works too*/
-//$primary-background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
-;
-// * {
-//   border: solid black 2px;
-// }
+@import 'variables';
+@import 'mixins';
 
 body {
   margin: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include flex-column-center;
   padding-left: 50px;
   padding-right: 50px;
 }
 
 header {
-  border: solid black 3px;
   height: 100px;
-  // width: 100vw;
+  @include flex-column-center;
+  justify-content: center;
 }
 
 form {
-  // border: dotted purple 3px;
-  display: flex;
-  flex-direction: column;
+  @include flex-column-center;
   justify-content: center;
-  align-items: center;
-  background-color: white;
+  background-color: $main-bg-color;
 }
 
 section {
@@ -50,19 +41,13 @@ img {
 
 //Request form styles
 .form-wrapper-div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include flex-column-center;
   border-radius: 0px;
 }
 
 .date-picker-wrapper {
   margin-top: 50px;
   margin-bottom: 25px;
-}
-
-.duration-picker-wrapper {
-  // border: solid black 2px;
 }
 
 .date-in-days-wrapper,
@@ -81,14 +66,13 @@ img {
 }
 
 .destination-selector {
-  // border: solid red 3px;
   margin-top: 25px;
   height: 350px;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
   overflow-x: scroll;
-  background-color: white;
+  background-color: $main-bg-color;
 }
 
 .login-btn,
@@ -99,25 +83,19 @@ img {
   width: 155px;
 }
 
-
-
 // Destination Card Styles
 .user-card-wrapper,
 .request-card-wrapper {
-  // border: solid blue 3px;
   margin: 5px;
   height: 300px;
   width: 300px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: #ffffff;
+  @include flex-column-center;
+  background: $main-bg-color;
   box-shadow:  5px 5px 10px #8f8f8f,
-             -5px -5px 10px #ffffff;
+             -5px -5px 10px $main-bg-color;
 }
 
 .destination-card-image {
-  // border: solid yellow 3px;
   margin: 1px;
   width: 280px;
   height: 175px;
@@ -127,7 +105,6 @@ img {
   width: 30%;
   height: 25px;
 }
-// User trips sections
 .current,
 .upcoming,
 .past,
@@ -137,9 +114,6 @@ img {
   justify-content: space-around;
   overflow-x: scroll;
 }
-
-
-
 
 .hidden {
   display: none;
