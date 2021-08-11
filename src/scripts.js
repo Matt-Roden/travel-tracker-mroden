@@ -78,6 +78,7 @@ function loadUpdatedTripsData(event) {
   bookedTrip = makeNewTripObject();
   postTrip(bookedTrip);
   location.reload();
+  domUpdateMethods.displayTripCostEstimate(allTrips.reverse()[0].calculateTripCost())
 }
 
 const makeNewTripObject = () => {

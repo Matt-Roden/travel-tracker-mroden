@@ -49,6 +49,9 @@ const domUpdateMethods = {
   displayLoginErrorMessage() {
     const errorMessage = document.querySelector('.login-header');
     errorMessage.innerText = 'Oops! Looks like your Username or Password is incorrect, please try again.';
+  },
+  displayTripCostEstimate() {
+    const tripCost = document.getElementById('')
   }
 
 }; // END domUpdates
