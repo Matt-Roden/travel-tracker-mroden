@@ -6,7 +6,7 @@
 
 ## Objectives
 
-- Build an application that allows a user to track their adventures in traveling as well as request new trips from the agency. This means that a user can login, see all of their previous, upcoming, current, and pending trips as well as request a new trip, which would then need to be accepted by the agnecy. All of the data from this application is coming from a local API. This project utilizes the `fetchAPI` and currently uses the `GET` and `POST` methods.  
+- Build an application that allows a user to track their adventures in traveling as well as request new trips from the agency. This means that a user can login, see all of their previous, upcoming, current, and pending trips as well as request a new trip, which would then need to be accepted by the agency. All of the data from this application is coming from a local API. This project utilizes the `fetchAPI` and currently uses the `GET` and `POST` methods.  
 
 ## Technology Stack
 
